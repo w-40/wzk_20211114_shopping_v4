@@ -3,6 +3,7 @@ package nuc.ss.shopping.component;
  * @author：wzk
  * @desc：电商购物平台-购物车添加商品对话框
  */
+
 import nuc.ss.shopping.db.BookDataSet;
 import nuc.ss.shopping.entity.Book;
 import nuc.ss.shopping.entity.Category;
@@ -21,6 +22,7 @@ import static nuc.ss.shopping.frame.ShoppingCartFrame.cartModel;
 
 public class CartAddDialog extends JDialog {
     ShoppingCart sc = new ShoppingCart();
+
     public CartAddDialog(Frame jf, String title, boolean modal) {
         super(jf, title, modal);
         this.setSize(453, 161);
@@ -69,36 +71,24 @@ public class CartAddDialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 BookDataSet bds = new BookDataSet();
                 String name = bookNameField.getText().trim();
-                String bid = "";
-                String author = "";
-                float price = 0;
-                int num = 0;
-                Category category = null;
 
                 int cartAddNum = Integer.parseInt(numField.getText());
                 List<Book> books = bds.getBooks();
-                for (Book book : books) {
-                    if (name.equals(book.getName())){
-                        bid = book.getId();
-                        author = book.getAuthor();
-                        price = book.getPrice();
-                        num = book.getNum();
-                        category = book.getCategory();
+                Book book = null;
+                for (int index = 0; index < books.size(); index++) {
+                    if (name.equals(books.get(index).getName())) {
+                        book = books.get(index);
                     }
                 }
-                Book book = new Book(bid,name,author,price,num,category);
 
+                boolean flag = false;
+                try {
+                    flag = sc.buy(book, cartAddNum);
+                } catch (StockException stockException) {
+                    JOptionPane.showMessageDialog(jf, stockException);
+                }
                 Object[] colName = {"书名", "数量", "总价"};
                 Map<Book, Integer> cartMap = sc.getCarts();
-
-
-                Iterator iterator = cartMap.entrySet().iterator();
-                while (iterator.hasNext()){
-                    Map.Entry entry = (Map.Entry)iterator.next();
-                    System.out.println(entry.getKey());
-                    System.out.println(entry.getValue());
-                }
-
 
                 Object[][] c = new Object[cartMap.size()][3];
                 int i = 0;
@@ -109,18 +99,11 @@ public class CartAddDialog extends JDialog {
                     i++;
                 }
                 cartModel.setDataVector(c, colName);
-
-                boolean flag = false;
-                try {
-                    flag = sc.buy(book,cartAddNum);
-                } catch (StockException stockException) {
-                    JOptionPane.showMessageDialog(jf,stockException);
-                }
-                if (flag == true){
-                    JOptionPane.showMessageDialog(jf,"添加成功");
+                if (flag == true) {
+                    JOptionPane.showMessageDialog(jf, "添加成功");
                     dispose();
-                }else {
-                    JOptionPane.showMessageDialog(jf,"添加失败");
+                } else {
+                    JOptionPane.showMessageDialog(jf, "添加失败");
                 }
 
 

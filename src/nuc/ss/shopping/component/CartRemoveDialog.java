@@ -15,6 +15,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Map;
+
+import static nuc.ss.shopping.frame.ShoppingCartFrame.cartModel;
 
 
 public class CartRemoveDialog extends JDialog {
@@ -61,38 +64,47 @@ public class CartRemoveDialog extends JDialog {
 
         this.add(hBox);
 
-
-
         removeBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BookDataSet bds = new BookDataSet();
                 String name = bookNameField.getText().trim();
-                String bid = "";
-                String author = "";
-                float price = 0;
-                int num = 0;
-                Category category = null;
-                int cartBookNum = Integer.parseInt(numField.getText());
+                int removeNum = Integer.parseInt(numField.getText());
                 List<Book> books = bds.getBooks();
-                for (Book book : books) {
-                    if (name.equals(book.getName())){
-                        bid = book.getId();
-                        author = book.getAuthor();
-                        price = book.getPrice();
-                        num = book.getNum();
-                        category = book.getCategory();
+                Book book = null;
+                for (int index = 0; index < books.size(); index++) {
+                    if (name.equals(books.get(index).getName())){
+                        book = books.get(index);
                     }
                 }
-
-                Book book = new Book(bid,name,author,price,num,category);
+                boolean flag = false;
+                ShoppingCart sc = null;
                 try {
-                    ShoppingCart sc = new ShoppingCart();
-                    sc.remove(book);
+                    sc = new ShoppingCart();
+                    flag = sc.remove(book,removeNum);
                 } catch (StockException stockException) {
                     JOptionPane.showMessageDialog(jf,stockException);
                 }
+                Object[] colName = {"书名", "数量", "总价"};
+                Map<Book, Integer> cartMap = sc.getCarts();
+
+                Object[][] c = new Object[cartMap.size()][3];
+                int i = 0;
+                for (Map.Entry<Book, Integer> entry : cartMap.entrySet()) {
+                    c[i][0] = entry.getKey().getName();
+                    c[i][1] = entry.getValue();
+                    c[i][2] = entry.getKey().getPrice() * entry.getValue();
+                    i++;
+                }
+                cartModel.setDataVector(c, colName);
+                if (flag == true) {
+                    JOptionPane.showMessageDialog(jf, "移除成功");
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(jf, "移除失败");
+                }
             }
         });
+
     }
 }

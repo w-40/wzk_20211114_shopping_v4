@@ -60,6 +60,27 @@ public class ShoppingCartFrame {
             }
         });
 
+        clearBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShoppingCart sc = new ShoppingCart();
+                sc.clear();
+                Object[] colName = {"书名", "数量", "总价"};
+                Map<Book, Integer> cartMap = sc.getCarts();
+
+                Object[][] c = new Object[cartMap.size()][3];
+                int i = 0;
+                for (Map.Entry<Book, Integer> entry : cartMap.entrySet()) {
+                    c[i][0] = entry.getKey().getName();
+                    c[i][1] = entry.getValue();
+                    c[i][2] = entry.getKey().getPrice() * entry.getValue();
+                    i++;
+                }
+                cartModel.setDataVector(c, colName);
+                JOptionPane.showMessageDialog(jf,"清空购物车成功！");
+            }
+        });
+
 
         //设置分割线
         JSeparator sep = new JSeparator(SwingConstants.CENTER);
