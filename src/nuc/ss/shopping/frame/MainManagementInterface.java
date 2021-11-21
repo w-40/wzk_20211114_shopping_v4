@@ -1,5 +1,8 @@
 package nuc.ss.shopping.frame;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台-主管理页面
+ */
 import nuc.ss.shopping.entity.User;
 
 import javax.swing.*;

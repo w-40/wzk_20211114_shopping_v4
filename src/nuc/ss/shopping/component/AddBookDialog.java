@@ -1,5 +1,8 @@
 package nuc.ss.shopping.component;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台-添加图书对话框
+ */
 import nuc.ss.shopping.db.BookDataSet;
 import nuc.ss.shopping.entity.Book;
 import nuc.ss.shopping.entity.Category;

@@ -1,4 +1,8 @@
 package nuc.ss.shopping.frame;
+/**
+ * @author：wzk
+ * @desc：电商购物平台-普通用户登录之后显示商品查询界面
+ */
 
 import nuc.ss.shopping.db.BookDataSet;
 import nuc.ss.shopping.entity.Book;

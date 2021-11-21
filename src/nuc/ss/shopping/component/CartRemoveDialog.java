@@ -1,4 +1,8 @@
 package nuc.ss.shopping.component;
+/**
+ * @author：wzk
+ * @desc：电商购物平台-购物车移除商品对话框
+ */
 
 import nuc.ss.shopping.db.BookDataSet;
 import nuc.ss.shopping.entity.Book;
@@ -12,7 +16,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import static nuc.ss.shopping.component.CartAddDialog.shoppingCart;
+
 public class CartRemoveDialog extends JDialog {
+
     public CartRemoveDialog(Frame jf, String title, boolean modal) {
         super(jf, title, modal);
         this.setSize(453, 161);
@@ -55,7 +62,7 @@ public class CartRemoveDialog extends JDialog {
 
         this.add(hBox);
 
-        ShoppingCart shoppingCart = new ShoppingCart();
+
 
         removeBtn.addActionListener(new ActionListener() {
             @Override
@@ -80,7 +87,6 @@ public class CartRemoveDialog extends JDialog {
                 }
 
                 Book book = new Book(bid,name,author,price,num,category);
-
                 try {
                     shoppingCart.remove(book);
                 } catch (StockException stockException) {

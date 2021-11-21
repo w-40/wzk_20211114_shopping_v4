@@ -1,5 +1,8 @@
 package nuc.ss.shopping.frame;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台-用户信息查询页面
+ */
 import nuc.ss.shopping.db.UserDataSet;
 import nuc.ss.shopping.entity.User;
 import org.junit.Test;

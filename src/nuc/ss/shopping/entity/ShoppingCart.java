@@ -1,5 +1,8 @@
 package nuc.ss.shopping.entity;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台实体类：购物车
+ */
 
 import java.util.HashMap;
 import java.util.Iterator;

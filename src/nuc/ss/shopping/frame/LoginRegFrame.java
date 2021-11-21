@@ -1,5 +1,8 @@
 package nuc.ss.shopping.frame;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台-注册登录界面
+ */
 import nuc.ss.shopping.db.BookDataSet;
 import nuc.ss.shopping.db.UserDataSet;
 import nuc.ss.shopping.entity.Book;

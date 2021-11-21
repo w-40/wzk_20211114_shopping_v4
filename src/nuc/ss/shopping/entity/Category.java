@@ -2,7 +2,7 @@ package nuc.ss.shopping.entity;
 
 /**
  * @author wzk
- * @version 3.0
+ * @version 4.0
  * @description 电商购物平台实体类：书籍类目
  */
 public class Category {

@@ -1,4 +1,8 @@
 package nuc.ss.shopping.frame;
+/**
+ * @author:wzk
+ * @desc 电商购物平台，购物cn主界面
+ */
 
 import nuc.ss.shopping.component.CartAddDialog;
 import nuc.ss.shopping.component.CartRemoveDialog;

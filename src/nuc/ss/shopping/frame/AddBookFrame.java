@@ -1,5 +1,8 @@
 package nuc.ss.shopping.frame;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台-管理员添加图书页面
+ */
 import nuc.ss.shopping.component.AddBookDialog;
 import nuc.ss.shopping.db.BookDataSet;
 import nuc.ss.shopping.entity.Book;

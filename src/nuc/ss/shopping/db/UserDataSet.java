@@ -1,5 +1,8 @@
 package nuc.ss.shopping.db;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台user管理类
+ */
 import nuc.ss.shopping.entity.User;
 
 import java.util.ArrayList;

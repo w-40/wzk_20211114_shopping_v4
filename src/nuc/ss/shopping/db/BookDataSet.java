@@ -1,5 +1,8 @@
 package nuc.ss.shopping.db;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台book管理类
+ */
 import nuc.ss.shopping.entity.Book;
 import nuc.ss.shopping.entity.Category;
 import org.junit.Test;

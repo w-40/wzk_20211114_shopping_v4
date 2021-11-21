@@ -5,7 +5,10 @@ import nuc.ss.shopping.entity.Book;
 import nuc.ss.shopping.entity.Category;
 import nuc.ss.shopping.entity.ShoppingCart;
 import nuc.ss.shopping.entity.StockException;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台-购物车添加商品对话框
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class CartAddDialog extends JDialog {
+    static ShoppingCart shoppingCart = new ShoppingCart();
     public CartAddDialog(Frame jf, String title, boolean modal) {
         super(jf, title, modal);
         this.setSize(453, 161);

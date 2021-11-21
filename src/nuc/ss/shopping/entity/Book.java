@@ -1,5 +1,8 @@
 package nuc.ss.shopping.entity;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台实体类：书籍
+ */
 public class Book {
     private String bid;
     private String name;
