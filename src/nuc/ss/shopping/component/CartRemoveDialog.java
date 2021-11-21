@@ -14,7 +14,7 @@ import java.util.List;
 
 public class CartRemoveDialog extends JDialog {
     public CartRemoveDialog(Frame jf, String title, boolean modal) {
-        //super(jf, title, modal);
+        super(jf, title, modal);
         this.setSize(453, 161);
         this.setLocation(635, 330);
         Box vBox = Box.createVerticalBox();
