@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import static nuc.ss.shopping.component.CartAddDialog.shoppingCart;
 
 public class CartRemoveDialog extends JDialog {
 
@@ -88,7 +87,8 @@ public class CartRemoveDialog extends JDialog {
 
                 Book book = new Book(bid,name,author,price,num,category);
                 try {
-                    shoppingCart.remove(book);
+                    ShoppingCart sc = new ShoppingCart();
+                    sc.remove(book);
                 } catch (StockException stockException) {
                     JOptionPane.showMessageDialog(jf,stockException);
                 }

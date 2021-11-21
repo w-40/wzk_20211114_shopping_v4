@@ -6,13 +6,13 @@ package nuc.ss.shopping.frame;
 
 import nuc.ss.shopping.component.CartAddDialog;
 import nuc.ss.shopping.component.CartRemoveDialog;
-import nuc.ss.shopping.db.CartDataSet;
 import nuc.ss.shopping.entity.Book;
 import nuc.ss.shopping.entity.ShoppingCart;
-import org.junit.Test;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,13 +21,13 @@ import java.util.Map;
 
 
 public class ShoppingCartFrame {
-    private JTable shoppingCartData;
+    private JTable shoppingCartTable;
     public static DefaultTableModel cartModel;
     JFrame jf = new JFrame("电商购物平台_购物车详情");
 
     //@Test
     public void init() {
-        CartDataSet cds = new CartDataSet();
+        ShoppingCart sc = new ShoppingCart();
         JPanel jp = new JPanel();
         jf.setSize(600, 550);
         jf.setLocation(700, 340);
@@ -67,9 +67,8 @@ public class ShoppingCartFrame {
 
         jp.add(Box.createVerticalStrut(40));
 
-        Map<Book, Integer> cartMap = cds.getCarts();
+        Map<Book, Integer> cartMap = sc.getCarts();
         Object[][] c = new Object[cartMap.size()][3];
-        //Iterator iterator = cartMap.entrySet().iterator();
         int i = 0;
         for (Map.Entry<Book, Integer> entry : cartMap.entrySet()) {
             c[i][0] = entry.getKey().getName();
@@ -81,10 +80,17 @@ public class ShoppingCartFrame {
         cartModel = new DefaultTableModel(c, colName);
         //cartModel.setDataVector(c, colName);
         //cartModel = new DefaultTableModel(c, colName);
-        shoppingCartData = new JTable(cartModel);
+        shoppingCartTable = new JTable(cartModel);
+        JTableHeader cartTableHeader = shoppingCartTable.getTableHeader();
+        cartTableHeader.setFont(new Font("", Font.BOLD, 20));
+        shoppingCartTable.setPreferredSize(new Dimension(750, 200));
+        shoppingCartTable.setFont(new Font("", Font.LAYOUT_NO_LIMIT_CONTEXT, 18));
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(JLabel.CENTER);
+        shoppingCartTable.setDefaultRenderer(Object.class, tcr);
 
         jp.add(topBtnBox);
-        JScrollPane js = new JScrollPane(shoppingCartData);
+        JScrollPane js = new JScrollPane(shoppingCartTable);
         jp.add(sep);
         jp.add(js);
         jf.add(jp);

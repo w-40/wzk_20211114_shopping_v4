@@ -6,14 +6,19 @@ package nuc.ss.shopping.entity;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 public class ShoppingCart extends HashMap<Book, Integer> {
-
+    public static Map<Book,Integer> carts = new HashMap<Book,Integer>();
     private volatile boolean isUpdate = false;
 
     public boolean isUpdate() {
         return isUpdate;
+    }
+
+    public Map<Book, Integer> getCarts() {
+        return carts;
     }
 
     public void setUpdate(boolean isUpdate) {

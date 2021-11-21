@@ -13,10 +13,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
+import static nuc.ss.shopping.frame.ShoppingCartFrame.cartModel;
 
 public class CartAddDialog extends JDialog {
-    static ShoppingCart shoppingCart = new ShoppingCart();
+    ShoppingCart sc = new ShoppingCart();
     public CartAddDialog(Frame jf, String title, boolean modal) {
         super(jf, title, modal);
         this.setSize(453, 161);
@@ -59,7 +63,6 @@ public class CartAddDialog extends JDialog {
 
         this.add(hBox);
 
-        ShoppingCart shoppingCart = new ShoppingCart();
 
         addBtn.addActionListener(new ActionListener() {
             @Override
@@ -85,9 +88,31 @@ public class CartAddDialog extends JDialog {
                 }
                 Book book = new Book(bid,name,author,price,num,category);
 
+                Object[] colName = {"书名", "数量", "总价"};
+                Map<Book, Integer> cartMap = sc.getCarts();
+
+
+                Iterator iterator = cartMap.entrySet().iterator();
+                while (iterator.hasNext()){
+                    Map.Entry entry = (Map.Entry)iterator.next();
+                    System.out.println(entry.getKey());
+                    System.out.println(entry.getValue());
+                }
+
+
+                Object[][] c = new Object[cartMap.size()][3];
+                int i = 0;
+                for (Map.Entry<Book, Integer> entry : cartMap.entrySet()) {
+                    c[i][0] = entry.getKey().getName();
+                    c[i][1] = entry.getValue();
+                    c[i][2] = entry.getKey().getPrice() * entry.getValue();
+                    i++;
+                }
+                cartModel.setDataVector(c, colName);
+
                 boolean flag = false;
                 try {
-                    flag = shoppingCart.buy(book,cartAddNum);
+                    flag = sc.buy(book,cartAddNum);
                 } catch (StockException stockException) {
                     JOptionPane.showMessageDialog(jf,stockException);
                 }
@@ -97,6 +122,8 @@ public class CartAddDialog extends JDialog {
                 }else {
                     JOptionPane.showMessageDialog(jf,"添加失败");
                 }
+
+
             }
         });
     }

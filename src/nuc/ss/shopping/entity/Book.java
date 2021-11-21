@@ -28,6 +28,15 @@ public class Book {
         this.category = category;
     }
 
+    //Test
+//    public Book(String bid, String name, String author, float price, int num) {
+//        this.bid = bid;
+//        this.name = name;
+//        this.author = author;
+//        this.price = price;
+//        this.num = num;
+//    }
+
     public String getId() {
         return bid;
     }

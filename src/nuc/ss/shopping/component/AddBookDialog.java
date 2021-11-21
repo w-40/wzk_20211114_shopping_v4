@@ -151,8 +151,6 @@ public class AddBookDialog extends JDialog {
                 Book book = new Book(bid,name,author,price,num,category);
 
                 boolean flag = bds.addBook(book);
-
-
                 List<Book> books = bds.getBooks();
                 /*for (Book book1 : books) {
                     System.out.println(book1);
