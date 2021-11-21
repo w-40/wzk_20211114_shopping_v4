@@ -26,7 +26,6 @@ public class AddBookFrame {
     private Box bottomBox;
     public static DefaultTableModel bookModel;
     public void init(User u) {
-
         jf.setLocation(620, 260);
         jf.setSize(800, 650);
         JLabel l_hello = new JLabel("你好," + u.getName(), JLabel.LEFT);

@@ -86,7 +86,7 @@ public class LoginRegFrame {
                                     new MainManagementInterface().init(users.get(i));
                                 } else {
                                     JOptionPane.showMessageDialog(jf, "登录成功");
-                                    new InquireFrame().init();
+                                    new InquireFrame().init(users.get(i));
                                 }
                             } else {
                                 JOptionPane.showMessageDialog(jf, "账号或密码错误");

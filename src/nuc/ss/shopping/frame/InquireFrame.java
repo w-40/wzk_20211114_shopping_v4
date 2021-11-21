@@ -6,6 +6,7 @@ package nuc.ss.shopping.frame;
 
 import nuc.ss.shopping.db.BookDataSet;
 import nuc.ss.shopping.entity.Book;
+import nuc.ss.shopping.entity.User;
 import org.junit.Test;
 
 import javax.swing.*;
@@ -21,13 +22,13 @@ import static nuc.ss.shopping.frame.AddBookFrame.bookModel;
 public class InquireFrame {
     private JFrame jf = new JFrame("电商购物平台_商品查询页面(普通用户)");
 
-    public void init() {
+    public void init(User u) {
         JPanel jp = new JPanel();
         jf.setLocation(800, 300);
         jf.setSize(800, 650);
-        JLabel l_hello = new JLabel("你好,王志凯", JLabel.LEFT);
+        JLabel l_hello = new JLabel("你好," + u.getName(), JLabel.LEFT);
         l_hello.setFont(new Font("你好,", Font.BOLD, 20));
-        JLabel l_from = new JLabel("来自于:(山西省)10.163.192.4", JLabel.RIGHT);
+        JLabel l_from = new JLabel("来自于:" + u.getCity(), JLabel.RIGHT);
         l_from.setFont(new Font("来自于:", Font.BOLD, 20));
 
         Box topBox = Box.createHorizontalBox();

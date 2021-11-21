@@ -1,14 +1,14 @@
 package nuc.ss.shopping.component;
-
+/**
+ * @author：wzk
+ * @desc：电商购物平台-购物车添加商品对话框
+ */
 import nuc.ss.shopping.db.BookDataSet;
 import nuc.ss.shopping.entity.Book;
 import nuc.ss.shopping.entity.Category;
 import nuc.ss.shopping.entity.ShoppingCart;
 import nuc.ss.shopping.entity.StockException;
-/**
- * @author：wzk
- * @desc：电商购物平台-购物车添加商品对话框
- */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
