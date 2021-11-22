@@ -72,8 +72,6 @@ public class ShoppingCart {
             throw new StockException("您购买的" + book.getName() + "不足" + removeNum + "本");
         }
 
-
-
         carts.remove(book);
 
         this.isUpdate = true;

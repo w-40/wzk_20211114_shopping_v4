@@ -105,8 +105,6 @@ public class CartAddDialog extends JDialog {
                 } else {
                     JOptionPane.showMessageDialog(jf, "添加失败");
                 }
-
-
             }
         });
     }
